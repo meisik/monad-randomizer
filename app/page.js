@@ -2,9 +2,9 @@
 
 import Head from "next/head";
 import { useState } from "react";
-import confetti from "canvas-confetti"; // Для фейерверков
 
 export default function Home() {
+    // Список изображений и фраз
     const images = Array.from({ length: 20 }, (_, i) => `/images/image${i + 1}.jpg`);
     const phrases = [
         "You are a leader of ideas today!",
@@ -34,13 +34,6 @@ export default function Home() {
     const handleRandomize = () => {
         const index = Math.floor(Math.random() * images.length);
         setRandomIndex(index);
-
-        // Запуск анимации фейерверков
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 },
-        });
     };
 
     const selectedImage = randomIndex !== null ? images[randomIndex] : null;
@@ -124,7 +117,7 @@ export default function Home() {
                         Click Here
                     </button>
                     <p style={{ marginTop: "50px", fontSize: "16px" }}>
-                        Created by Annad with love for the Monad community
+                        Created with love for the Monad community
                     </p>
                 </>
             )}
