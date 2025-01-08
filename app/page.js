@@ -47,7 +47,7 @@ export default function Home() {
             style={{
                 textAlign: "center",
                 padding: "20px",
-                backgroundColor: "#1F1F1F", // Темный фон
+                backgroundColor: "#6A0DAD", // Фиолетовый фон
                 color: "#FFFFFF",
                 minHeight: "100vh",
                 display: "flex",
@@ -76,6 +76,7 @@ export default function Home() {
                         style={{
                             fontSize: "32px",
                             fontWeight: "bold",
+                            color: "#FFD700", // Золотой текст
                             animation: "fadeIn 1s ease-in-out",
                         }}
                     >
@@ -95,10 +96,10 @@ export default function Home() {
                         style={{
                             fontSize: "36px", // Увеличенный шрифт
                             fontFamily: "'Roboto Slab', serif", // Приятный шрифт
-                            color: "#FFD700", // Золотистый текст
+                            color: "#FFD700", // Золотой текст
                             fontWeight: "bold",
                             marginTop: "10px",
-                            lineHeight: "1.5", // Пространство между строками
+                            lineHeight: "1.5",
                             animation: "fadeInUp 1.5s ease-in-out",
                         }}
                     >
@@ -115,7 +116,7 @@ export default function Home() {
                             padding: "10px 20px",
                             marginTop: "20px",
                             backgroundColor: "#FFD700",
-                            color: "#1F1F1F",
+                            color: "#6A0DAD", // Фиолетовый текст
                             borderRadius: "5px",
                             textDecoration: "none",
                             fontWeight: "bold",
@@ -134,6 +135,7 @@ export default function Home() {
                         style={{
                             fontSize: "32px",
                             fontWeight: "bold",
+                            color: "#FFD700", // Золотой текст
                             animation: "fadeIn 1s ease-in-out",
                         }}
                     >
@@ -144,7 +146,7 @@ export default function Home() {
                         style={{
                             padding: "10px 20px",
                             backgroundColor: "#FFD700",
-                            color: "#1F1F1F",
+                            color: "#6A0DAD",
                             borderRadius: "5px",
                             border: "none",
                             fontSize: "18px",
