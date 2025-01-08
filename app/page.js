@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function Home() {
     // Список изображений и фраз
-    const images = Array.from({ length: 20 }, (_, i) => `/images/image${i + 1}.jpg`);
+    const images = Array.from({ length: 60 }, (_, i) => `/images/image${i + 1}.jpg`);
     const phrases = [
         "You are a leader of ideas today!",
         "A day for peace and reflection.",
