@@ -1,10 +1,10 @@
 "use client";
 
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import confetti from "canvas-confetti";
 
 export default function Home() {
-    // Список изображений и фраз
     const images = Array.from({ length: 20 }, (_, i) => `/images/image${i + 1}.jpg`);
     const phrases = [
         "You are a leader of ideas today!",
@@ -29,12 +29,25 @@ export default function Home() {
         "Celebrate your uniqueness today!",
     ];
 
-    // Состояние для случайных значений
     const [randomIndex, setRandomIndex] = useState(null);
+    const audioRef = useRef(null); // Ссылка на аудиоплеер
 
     const handleRandomize = () => {
         const index = Math.floor(Math.random() * images.length);
         setRandomIndex(index);
+
+        // Запускаем фейерверк
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+        });
+
+        // Воспроизводим музыку
+        if (audioRef.current) {
+            audioRef.current.currentTime = 0; // Начинаем с начала
+            audioRef.current.play();
+        }
     };
 
     const selectedImage = randomIndex !== null ? images[randomIndex] : null;
@@ -49,9 +62,9 @@ export default function Home() {
             style={{
                 textAlign: "center",
                 padding: "20px",
-                backgroundColor: "#836EF9", // Фиолетовый фон
-                color: "#FFFFFF", // Белый текст
-                minHeight: "100vh", // Высота экрана
+                backgroundColor: "#836EF9",
+                color: "#FFFFFF",
+                minHeight: "100vh",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -72,11 +85,29 @@ export default function Home() {
                     </>
                 )}
             </Head>
+            <audio ref={audioRef} src="/music/background-music.mp3" preload="auto" /> {/* Аудиоплеер */}
             {selectedImage ? (
                 <>
                     <h1 style={{ fontSize: "32px", fontWeight: "bold" }}>Your day in Monad today:</h1>
-                    <img src={selectedImage} alt="Monad" style={{ maxWidth: "300px", borderRadius: "10px", marginTop: "20px" }} />
-                    <p style={{ fontSize: "20px", marginTop: "10px" }}>{selectedPhrase}</p>
+                    <img
+                        src={selectedImage}
+                        alt="Monad"
+                        style={{
+                            maxWidth: "300px",
+                            borderRadius: "10px",
+                            marginTop: "20px",
+                            animation: "fade-in 1s ease-in-out",
+                        }}
+                    />
+                    <p
+                        style={{
+                            fontSize: "20px",
+                            marginTop: "10px",
+                            animation: "slide-in 1s ease-in-out",
+                        }}
+                    >
+                        {selectedPhrase}
+                    </p>
                     <a
                         href={`https://x.com/intent/tweet?text=${encodeURIComponent(
                             shareText
