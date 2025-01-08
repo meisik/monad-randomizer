@@ -4,8 +4,7 @@ import Head from "next/head";
 import { useState } from "react";
 
 export default function Home() {
-    // Список изображений и фраз
-    const images = Array.from({ length: 60 }, (_, i) => `/images/image${i + 1}.jpg`);
+    const images = Array.from({ length: 20 }, (_, i) => `/images/image${i + 1}.jpg`);
     const phrases = [
         "You are a leader of ideas today!",
         "A day for peace and reflection.",
@@ -48,9 +47,9 @@ export default function Home() {
             style={{
                 textAlign: "center",
                 padding: "20px",
-                backgroundColor: "#836EF9", // Фиолетовый фон
-                color: "#FFFFFF", // Белый текст
-                minHeight: "100vh", // Высота экрана
+                backgroundColor: "#1F1F1F", // Темный фон
+                color: "#FFFFFF",
+                minHeight: "100vh",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -65,17 +64,46 @@ export default function Home() {
                         <meta name="twitter:title" content="Monad Randomizer" />
                         <meta name="twitter:description" content={shareText} />
                         <meta name="twitter:image" content={`https://monad-random.vercel.app${selectedImage}`} />
-                        <meta name="og:title" content="Monad Randomizer" />
-                        <meta name="og:description" content={shareText} />
-                        <meta name="og:image" content={`https://monad-random.vercel.app${selectedImage}`} />
+                        <meta property="og:title" content="Monad Randomizer" />
+                        <meta property="og:description" content={shareText} />
+                        <meta property="og:image" content={`https://monad-random.vercel.app${selectedImage}`} />
                     </>
                 )}
             </Head>
             {selectedImage ? (
                 <>
-                    <h1 style={{ fontSize: "32px", fontWeight: "bold" }}>Your day in Monad today:</h1>
-                    <img src={selectedImage} alt="Monad" style={{ maxWidth: "300px", borderRadius: "10px", marginTop: "20px" }} />
-                    <p style={{ fontSize: "20px", marginTop: "10px" }}>{selectedPhrase}</p>
+                    <h1
+                        style={{
+                            fontSize: "32px",
+                            fontWeight: "bold",
+                            animation: "fadeIn 1s ease-in-out",
+                        }}
+                    >
+                        Your day in Monad today:
+                    </h1>
+                    <img
+                        src={selectedImage}
+                        alt="Monad"
+                        style={{
+                            maxWidth: "300px",
+                            borderRadius: "10px",
+                            marginTop: "20px",
+                            animation: "zoomIn 1.2s ease-in-out",
+                        }}
+                    />
+                    <p
+                        style={{
+                            fontSize: "36px", // Увеличенный шрифт
+                            fontFamily: "'Roboto Slab', serif", // Приятный шрифт
+                            color: "#FFD700", // Золотистый текст
+                            fontWeight: "bold",
+                            marginTop: "10px",
+                            lineHeight: "1.5", // Пространство между строками
+                            animation: "fadeInUp 1.5s ease-in-out",
+                        }}
+                    >
+                        {selectedPhrase}
+                    </p>
                     <a
                         href={`https://x.com/intent/tweet?text=${encodeURIComponent(
                             shareText
@@ -86,41 +114,76 @@ export default function Home() {
                             display: "inline-block",
                             padding: "10px 20px",
                             marginTop: "20px",
-                            backgroundColor: "#FFFFFF",
-                            color: "#836EF9",
+                            backgroundColor: "#FFD700",
+                            color: "#1F1F1F",
                             borderRadius: "5px",
                             textDecoration: "none",
                             fontWeight: "bold",
                             fontSize: "16px",
+                            transition: "transform 0.2s",
                         }}
+                        onMouseOver={(e) => (e.target.style.transform = "scale(1.1)")}
+                        onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
                     >
                         Share on X
                     </a>
                 </>
             ) : (
                 <>
-                    <h1 style={{ fontSize: "32px", fontWeight: "bold" }}>Who are you today in Monad?</h1>
+                    <h1
+                        style={{
+                            fontSize: "32px",
+                            fontWeight: "bold",
+                            animation: "fadeIn 1s ease-in-out",
+                        }}
+                    >
+                        Who are you today in Monad?
+                    </h1>
                     <button
                         onClick={handleRandomize}
                         style={{
                             padding: "10px 20px",
-                            backgroundColor: "#FFFFFF",
-                            color: "#836EF9",
+                            backgroundColor: "#FFD700",
+                            color: "#1F1F1F",
                             borderRadius: "5px",
                             border: "none",
                             fontSize: "18px",
                             fontWeight: "bold",
                             cursor: "pointer",
                             marginTop: "20px",
+                            transition: "transform 0.2s",
                         }}
+                        onMouseOver={(e) => (e.target.style.transform = "scale(1.1)")}
+                        onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
                     >
                         Click Here
                     </button>
-                    <p style={{ marginTop: "50px", fontSize: "16px" }}>
-                        Created with love for the Monad community
+                    <p
+                        style={{
+                            marginTop: "50px",
+                            fontSize: "16px",
+                            fontFamily: "'Roboto', sans-serif",
+                            color: "#FFD700",
+                        }}
+                    >
+                        Created by Annad with love for the Monad community
                     </p>
                 </>
             )}
+            <style jsx global>{`
+                @keyframes fadeIn {
+                    0% { opacity: 0; }
+                    100% { opacity: 1; }
+                }
+                @keyframes zoomIn {
+                    0% { transform: scale(0.5); }
+                    100% { transform: scale(1); }
+                }
+                @keyframes fadeInUp {
+                    0% { opacity: 0; transform: translateY(20px); }
+                    100% { opacity: 1; transform: translateY(0); }
+                }
+            `}</style>
         </div>
     );
 }
