@@ -2,190 +2,157 @@
 
 import Head from "next/head";
 import { useState } from "react";
+import styles from "./styles.module.css";
 
 export default function Home() {
-    const images = Array.from({ length: 20 }, (_, i) => `/images/image${i + 1}.jpg`);
-    const phrases = [
-        "You are a leader of ideas today!",
-        "A day for peace and reflection.",
-        "Your potential is at its peak today!",
-        "Today, you inspire everyone around you.",
-        "Be yourself and brighten the world!",
-        "Every step today leads to success.",
-        "Perfect day for new ideas!",
-        "You are a shining star in this world.",
-        "Your positivity is contagious today!",
-        "Stay confident: you're on the right path.",
-        "Today, your creativity knows no bounds.",
-        "You are unstoppable today!",
-        "A great day to achieve your dreams.",
-        "Share your wisdom with the world today.",
-        "Focus and conquer challenges today.",
-        "You are the architect of your success.",
-        "Your energy today is truly magnetic.",
-        "Lead by example and inspire others.",
-        "A day for bold decisions and actions.",
-        "Celebrate your uniqueness today!",
-    ];
+  const images = Array.from({ length: 50 }, (_, i) => `/images/image${i + 1}.jpg`);
+  const phrases = [
+    "You are a beacon of light today!",
+    "Radiate positivity and joy!",
+    "Embrace your unique strength.",
+    "Today is full of opportunities.",
+    "Share your wisdom with the world.",
+    "A perfect day for great beginnings.",
+    "Your creativity shines brightly.",
+    "Inspire those around you!",
+    "Celebrate every small victory today.",
+    "You are a source of happiness.",
+    "Be kind to yourself and others.",
+    "Spread love and kindness.",
+    "Take a bold step towards your dreams.",
+    "Your energy is magnetic today.",
+    "You are unstoppable!",
+    "Find beauty in the simple things.",
+    "Success is on your horizon.",
+    "Cherish the present moment.",
+    "Lead with courage and confidence.",
+    "Your heart is your greatest guide.",
+    "A smile can change everything.",
+    "You are stronger than you think.",
+    "Trust in your abilities.",
+    "You have the power to make a difference.",
+    "Your kindness inspires others.",
+    "Believe in the magic of today.",
+    "Today is yours to conquer.",
+    "Greatness is within your reach.",
+    "Be fearless in your pursuit of joy.",
+    "You are making a positive impact.",
+    "Take a moment to breathe deeply.",
+    "Your presence lights up the room.",
+    "Focus on what truly matters.",
+    "Embrace challenges with grace.",
+    "Every step forward counts.",
+    "You are full of infinite potential.",
+    "Let your soul shine.",
+    "Gratitude opens doors to abundance.",
+    "Your dreams are worth chasing.",
+    "Celebrate your progress today.",
+    "Keep moving forward with purpose.",
+    "You are loved and appreciated.",
+    "Let positivity guide your day.",
+    "Today is a gift; unwrap it fully.",
+    "Shine bright like the star you are.",
+    "You are writing your success story.",
+    "Your compassion is your superpower.",
+    "Smile; the world needs it.",
+    "You are exactly where you need to be.",
+    "Share joy wherever you go.",
+  ];
 
-    const [randomIndex, setRandomIndex] = useState(null);
+  const [randomIndex, setRandomIndex] = useState(null);
 
-    const handleRandomize = () => {
-        const index = Math.floor(Math.random() * images.length);
-        setRandomIndex(index);
-    };
+  const handleRandomize = () => {
+    const index = Math.floor(Math.random() * images.length);
+    setRandomIndex(index);
+  };
 
-    const selectedImage = randomIndex !== null ? images[randomIndex] : null;
-    const selectedPhrase = randomIndex !== null ? phrases[randomIndex] : null;
+  const selectedImage = randomIndex !== null ? images[randomIndex] : null;
+  const selectedPhrase = randomIndex !== null ? phrases[randomIndex] : null;
 
-    const shareText = selectedPhrase
-        ? `Today, I am in Monad: "${selectedPhrase}".`
-        : "";
+  const shareText = selectedPhrase
+    ? `Feeling inspired in Monad today: "${selectedPhrase}". Join the positive vibes with @Anna272493 and @monad_xyz!`
+    : "";
 
-    return (
-        <div
-            style={{
-                textAlign: "center",
-                padding: "20px",
-                backgroundColor: "#6A0DAD", // Фиолетовый фон
-                color: "#FFFFFF",
-                minHeight: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
-            <Head>
-                <title>Monad Randomizer</title>
-                {selectedImage && (
-                    <>
-                        <meta name="twitter:card" content="summary_large_image" />
-                        <meta name="twitter:title" content="Monad Randomizer" />
-                        <meta name="twitter:description" content={shareText} />
-                        <meta name="twitter:image" content={`https://monad-random.vercel.app${selectedImage}`} />
-                        <meta property="og:title" content="Monad Randomizer" />
-                        <meta property="og:description" content={shareText} />
-                        <meta property="og:image" content={`https://monad-random.vercel.app${selectedImage}`} />
-                    </>
-                )}
-            </Head>
-            {selectedImage ? (
-                <>
-                    <h1
-                        style={{
-                            fontSize: "32px",
-                            fontWeight: "bold",
-                            color: "#FFD700", // Золотой текст
-                            animation: "fadeIn 1s ease-in-out",
-                        }}
-                    >
-                        Your day in Monad today:
-                    </h1>
-                    <img
-                        src={selectedImage}
-                        alt="Monad"
-                        style={{
-                            maxWidth: "300px",
-                            borderRadius: "10px",
-                            marginTop: "20px",
-                            animation: "zoomIn 1.2s ease-in-out",
-                        }}
-                    />
-                    <p
-                        style={{
-                            fontSize: "36px", // Увеличенный шрифт
-                            fontFamily: "'Roboto Slab', serif", // Приятный шрифт
-                            color: "#FFD700", // Золотой текст
-                            fontWeight: "bold",
-                            marginTop: "10px",
-                            lineHeight: "1.5",
-                            animation: "fadeInUp 1.5s ease-in-out",
-                        }}
-                    >
-                        {selectedPhrase}
-                    </p>
-                    <a
-                        href={`https://x.com/intent/tweet?text=${encodeURIComponent(
-                            shareText
-                        )}&url=https://monad-random.vercel.app&hashtags=Monad`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                            display: "inline-block",
-                            padding: "10px 20px",
-                            marginTop: "20px",
-                            backgroundColor: "#FFD700",
-                            color: "#6A0DAD", // Фиолетовый текст
-                            borderRadius: "5px",
-                            textDecoration: "none",
-                            fontWeight: "bold",
-                            fontSize: "16px",
-                            transition: "transform 0.2s",
-                        }}
-                        onMouseOver={(e) => (e.target.style.transform = "scale(1.1)")}
-                        onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
-                    >
-                        Share on X
-                    </a>
-                </>
-            ) : (
-                <>
-                    <h1
-                        style={{
-                            fontSize: "32px",
-                            fontWeight: "bold",
-                            color: "#FFD700", // Золотой текст
-                            animation: "fadeIn 1s ease-in-out",
-                        }}
-                    >
-                        Who are you today in Monad?
-                    </h1>
-                    <button
-                        onClick={handleRandomize}
-                        style={{
-                            padding: "10px 20px",
-                            backgroundColor: "#FFD700",
-                            color: "#6A0DAD",
-                            borderRadius: "5px",
-                            border: "none",
-                            fontSize: "18px",
-                            fontWeight: "bold",
-                            cursor: "pointer",
-                            marginTop: "20px",
-                            transition: "transform 0.2s",
-                        }}
-                        onMouseOver={(e) => (e.target.style.transform = "scale(1.1)")}
-                        onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
-                    >
-                        Click Here
-                    </button>
-                    <p
-                        style={{
-                            marginTop: "50px",
-                            fontSize: "16px",
-                            fontFamily: "'Roboto', sans-serif",
-                            color: "#FFD700",
-                        }}
-                    >
-                        Created by Annad with love for the Monad community
-                    </p>
-                </>
-            )}
-            <style jsx global>{`
-                @keyframes fadeIn {
-                    0% { opacity: 0; }
-                    100% { opacity: 1; }
-                }
-                @keyframes zoomIn {
-                    0% { transform: scale(0.5); }
-                    100% { transform: scale(1); }
-                }
-                @keyframes fadeInUp {
-                    0% { opacity: 0; transform: translateY(20px); }
-                    100% { opacity: 1; transform: translateY(0); }
-                }
-            `}</style>
-        </div>
-    );
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>Monad Randomizer</title>
+        {selectedImage && (
+          <>
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="Monad Randomizer" />
+            <meta name="twitter:description" content={shareText} />
+            <meta name="twitter:image" content={`https://monad-random.vercel.app${selectedImage}`} />
+            <meta name="og:title" content="Monad Randomizer" />
+            <meta name="og:description" content={shareText} />
+            <meta name="og:image" content={`https://monad-random.vercel.app${selectedImage}`} />
+          </>
+        )}
+      </Head>
+      {selectedImage ? (
+        <>
+          <h1 className={styles.header}>Your Monad Inspiration:</h1>
+          <div className={styles.imageContainer}>
+            <img src={selectedImage} alt="Monad" className={styles.image} />
+          </div>
+          <p className={styles.phrase}>{selectedPhrase}</p>
+          <a
+            href={`https://x.com/intent/tweet?text=${encodeURIComponent(
+              shareText
+            )}&url=https://monad-random.vercel.app&hashtags=Monad`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.shareButton}
+          >
+            Share on X
+          </a>
+          <button onClick={handleRandomize} className={styles.tryAgainButton}>
+            Try Again
+          </button>
+          <footer className={styles.footer}>
+            <div className={styles.footerSeparator}></div>
+            <p>Join the Monad Community:</p>
+            <div className={styles.footerLinks}>
+              <a
+                href="https://discord.com/invite/monad"
+                className={styles.footerLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Discord
+              </a>
+              <a
+                href="https://www.monad.xyz/"
+                className={styles.footerLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Website
+              </a>
+              <a
+                href="https://x.com/monad_xyz"
+                className={styles.footerLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                X (Twitter)
+              </a>
+            </div>
+          </footer>
+        </>
+      ) : (
+        <>
+          <h1 className={styles.header}>
+            Want to discover your Monad vibe for today?
+          </h1>
+          <button onClick={handleRandomize} className={styles.randomButton}>
+            Click the Button
+          </button>
+          <p className={styles.footer}>
+            Created with love by Annad for the Monad community ❤️
+          </p>
+        </>
+      )}
+    </div>
+  );
 }
