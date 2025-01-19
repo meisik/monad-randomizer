@@ -10,6 +10,21 @@
   align-items: center;
 }
 
+/* Блок для счётчика очков/уровня */
+.inspirationStats {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-align: right;
+  font-size: 16px;
+  color: #FFD700;
+}
+.inspirationStats p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Общие элементы */
 .header {
   font-size: 36px;
   font-weight: bold;
@@ -32,9 +47,19 @@
   color: #FFD700;
 }
 
+/* Горизонтальная группа кнопок */
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Кнопки */
 .randomButton,
 .tryAgainButton,
-.shareButton {
+.shareButton,
+.mintButton {
   padding: 15px 30px;
   background: linear-gradient(90deg, #FFD700, #FF4500);
   color: #6A0DAD;
@@ -43,9 +68,15 @@
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 15px;
 }
 
+/* Отдельно при желании можно стилизовать mintButton */
+.mintButton {
+  /* пример */
+  /* font-style: italic; */
+}
+
+/* Футер */
 .footer {
   margin-top: 50px;
   font-size: 16px;
